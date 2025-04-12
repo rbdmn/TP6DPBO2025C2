@@ -6,6 +6,7 @@ Tugas Praktikum 6 ini merupakan implementasi membuat game sederhana yang cukup p
 
 ## 1. Struktur Direktori
 ![image](https://github.com/user-attachments/assets/73dcfd19-2b9e-453b-b411-b85b2836d65e)
+
 Keterangan:
 - App.java = Bertindak sebagai titik awal aplikasi dan menampilkan menu utama sebelum permainan dimulai.
 - FlappyBird.java = Merupakan panel utama permainan. Seluruh logika permainan serta konfigurasi visual dan mekanik berada dalam file ini.
