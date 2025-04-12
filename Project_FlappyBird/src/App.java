@@ -1,6 +1,10 @@
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class App {
     public static void main(String[] args) {
@@ -10,6 +14,19 @@ public class App {
         menuFrame.setLocationRelativeTo(null);
         menuFrame.setResizable(false);
 
+        JPanel backgroundPanel = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                try {
+                    Image bg = ImageIO.read(App.class.getResource("/assets/background.png"));
+                    g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+                } catch (IOException e) {
+                    System.out.println("Gagal load background: " + e.getMessage());
+                }
+            }
+        };
+
         JButton startButton = new JButton("start da gaem");
         startButton.setFont(new Font("Arial", Font.BOLD, 24));
         startButton.setFocusPainted(false);
@@ -18,8 +35,8 @@ public class App {
             startGame();
         });
 
-        menuFrame.setLayout(new GridBagLayout());
-        menuFrame.add(startButton);
+        backgroundPanel.add(startButton);
+        menuFrame.setContentPane(backgroundPanel);
         menuFrame.setVisible(true);
     }
 
